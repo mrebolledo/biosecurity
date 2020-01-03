@@ -36,7 +36,7 @@ return [
     'connections' => [
         'grdxf' => [
             'driver' => 'mysql',
-            'host' => '34.74.232.92',
+            'host' => '10.115.144.5',
             //'host' => '34.66.170.27',
             'port' => '3306',
             'database' => 'grdxf',
