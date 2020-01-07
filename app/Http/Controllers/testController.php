@@ -11,4 +11,9 @@ class testController extends Controller
     {
         Worker::create(['test' => $value]);
     }
+
+    public function checkValues()
+    {
+        dd(Worker::count());
+    }
 }

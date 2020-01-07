@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 
 Route::get('test/{value}','testController@index');
+Route::get('testCheck','testController@checkValues');
