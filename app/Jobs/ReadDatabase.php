@@ -38,8 +38,7 @@ class ReadDatabase implements ShouldQueue
             $fecha = Carbon::now()->toDateTimeString();
             if($report->an1 !== 0) {
                 $worker = Worker::where('grd_id',$report->grd_id)
-                                ->where('date',$fecha)
-                                ->where('test',$report->an1)->first();
+                                ->where('test',$report->an1)->orderBy('date','desc')->first();
 
                 if(!$worker) {
                     Worker::create([
