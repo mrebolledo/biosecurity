@@ -26,7 +26,20 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        
+        $schedule->call(function () {
+
+            $dt = Carbon::now();
+
+            $x=60;
+
+            do{
+
+                ReadDatabase::dispatch();
+                time_sleep_until($dt->addSeconds(0.5)->timestamp);
+
+            } while($x-- > 0);
+
+        })->everyMinute();
     }
 
     /**

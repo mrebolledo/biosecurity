@@ -9,6 +9,7 @@ class Worker extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'test'
+        'test',
+        'date'
     ];
 }

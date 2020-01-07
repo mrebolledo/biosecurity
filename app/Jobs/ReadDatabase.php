@@ -4,6 +4,7 @@ namespace App\Jobs;
 
 use App\Report;
 use App\Worker;
+use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -34,8 +35,13 @@ class ReadDatabase implements ShouldQueue
         $reports = Report::get();
         foreach($reports as $report)
         {
-            if($report->an1)
-            Worker::create(['test' => $report->an1]);
+            if($report->an1 !== 0) {
+                Worker::create([
+                    'test' => $report->an1,
+                    'date' => Carbon::now()->toDateTimeString()
+                ]);
+            }
+
         }
     }
 }
