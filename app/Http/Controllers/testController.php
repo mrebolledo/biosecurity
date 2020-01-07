@@ -14,6 +14,6 @@ class testController extends Controller
 
     public function checkValues()
     {
-        dd(Worker::count());
+        dd(Worker::get());
     }
 }
