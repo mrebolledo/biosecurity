@@ -35,17 +35,17 @@ class ReadDatabase implements ShouldQueue
         $reports = Report::get();
         foreach($reports as $report)
         {
-
+            $fecha = Carbon::now()->toDateTimeString();
             if($report->an1 !== 0) {
                 $worker = Worker::where('grd_id',$report->grd_id)
-                                ->whereDate('date',Carbon::now()->toDateTimeString())
+                                ->where('date',$fecha)
                                 ->where('test',$report->an1)->first();
 
                 if(!$worker) {
                     Worker::create([
                         'test' => $report->an1,
                         'grd_id' => $report->grd_id,
-                        'date' => Carbon::now()->toDateTimeString()
+                        'date' => $fecha
                     ]);
                 }
 
