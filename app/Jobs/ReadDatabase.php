@@ -35,6 +35,7 @@ class ReadDatabase implements ShouldQueue
         $reports = Report::get();
         foreach($reports as $report)
         {
+
             if($report->an1 !== 0) {
                 Worker::create([
                     'test' => $report->an1,

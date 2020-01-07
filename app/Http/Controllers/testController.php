@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Report;
 use App\Worker;
 use Illuminate\Http\Request;
 
@@ -14,6 +15,6 @@ class testController extends Controller
 
     public function checkValues()
     {
-        dd(Worker::get());
+        dd(Worker::get(), Report::get());
     }
 }
