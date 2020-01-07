@@ -35,7 +35,7 @@ class Kernel extends ConsoleKernel
             do{
 
                 ReadDatabase::dispatch();
-                time_sleep_until($dt->addSeconds(0.5)->timestamp);
+                time_sleep_until($dt->addSeconds(1)->timestamp);
 
             } while($x-- > 0);
 
