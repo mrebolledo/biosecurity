@@ -40,7 +40,7 @@ class ReadDatabase implements ShouldQueue
                 $worker = Worker::where('grd_id',$report->grd_id)
                                 ->where('test',$report->an1)->orderBy('date','desc')->first();
 
-                if(!$worker) {
+                if(!$worker || Carbon::now()->diffInSeconds(Carbon::parse($worker->date)) >= 5) {
                     Worker::create([
                         'test' => $report->an1,
                         'grd_id' => $report->grd_id,
