@@ -10,6 +10,7 @@ class Worker extends Model
 
     protected $fillable = [
         'test',
-        'date'
+        'date',
+        'grd_id'
     ];
 }
