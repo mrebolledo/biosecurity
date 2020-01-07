@@ -2,6 +2,8 @@
 
 namespace App\Console;
 
+use App\Jobs\ReadDatabase;
+use Carbon\Carbon;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -24,8 +26,20 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $schedule->call(function () {
+
+            $dt = Carbon::now();
+
+            $x=60;
+
+            do{
+
+                ReadDatabase::dispatch();
+                time_sleep_until($dt->addSeconds(1)->timestamp);
+
+            } while($x-- > 0);
+
+        })->everyMinute();
     }
 
     /**
