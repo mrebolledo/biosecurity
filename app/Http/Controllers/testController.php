@@ -15,6 +15,6 @@ class testController extends Controller
 
     public function checkValues()
     {
-        dd(Worker::get(), Report::where('grd_id',2)->first());
+        dd(Worker::get(), Report::where('grd_id',1002)->first(),Report::where('grd_id',1002)->first()->an1);
     }
 }
